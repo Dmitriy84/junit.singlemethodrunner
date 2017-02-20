@@ -14,19 +14,19 @@ public class SingleMethodRunner {
 			} else
 				_run(classAndMethod[0], classAndMethod[1]);
 		}
-		System.out.println("PASSED: " + _isOK);
-		System.out.println("FAILED: " + _isNotOK);
+		System.out.println("PASSED: " + _OK);
+		System.out.println("FAILED: " + _NotOK);
 	}
 
-	private static JUnitCore _runner = new JUnitCore();
-	private static int _isOK, _isNotOK = 0;
+	private static final JUnitCore _runner = new JUnitCore();
+	private static int _OK, _NotOK = 0;
 
 	private static void _run(String cls, String method)
 			throws ClassNotFoundException {
 		if (_runner.run(Request.method(Class.forName(cls), method))
 				.wasSuccessful())
-			_isOK++;
+			_OK++;
 		else
-			_isNotOK++;
+			_NotOK++;
 	}
 }
